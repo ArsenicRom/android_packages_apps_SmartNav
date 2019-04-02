@@ -19,7 +19,7 @@ package com.android.systemui.navigation.smartbar;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.systemui.R;
 import com.android.systemui.navigation.*;
 import com.android.systemui.navigation.smartbar.SmartBarView;
@@ -69,7 +69,7 @@ public final class SmartBarTransitions extends BarTransitions {
     }
 
     public void applyDarkIntensity(float darkIntensity) {
-        for (SmartButtonView button : ActionUtils.getAllChildren(mView, SmartButtonView.class)) {
+        for (SmartButtonView button : ActionUtil.getAllChildren(mView, SmartButtonView.class)) {
             button.setRippleDarkIntensity(darkIntensity);
             Drawable d = button.getDrawable();
             if (d != null && d instanceof DarkIntensity) {

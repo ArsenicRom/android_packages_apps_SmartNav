@@ -55,7 +55,7 @@ import android.widget.LinearLayout;
 
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config;
 import com.android.internal.util.hwkeys.Config.ActionConfig;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
@@ -369,7 +369,7 @@ public class SmartBarView extends BaseNavigationBar {
     }
 
     public void updateCurrentIcons() {
-        for (SmartButtonView button : ActionUtils.getAllChildren(this, SmartButtonView.class)) {
+        for (SmartButtonView button : ActionUtil.getAllChildren(this, SmartButtonView.class)) {
             setButtonDrawable(button);
         }
     }

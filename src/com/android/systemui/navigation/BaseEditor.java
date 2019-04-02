@@ -26,7 +26,7 @@ package com.android.systemui.navigation;
 import com.android.systemui.navigation.BaseNavigationBar;
 import com.android.systemui.navigation.Editor;
 import com.android.systemui.R;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config.ActionConfig;
 
 import android.app.Activity;
@@ -125,28 +125,28 @@ public abstract class BaseEditor implements Editor {
     public void dispatchNavigationEditorResults(Intent intent) {
         if (intent != null) {
             String action = intent.getAction();
-            if (TextUtils.equals(ActionUtils.INTENT_NAVBAR_EDIT_RESET_LAYOUT, action)) {
+            if (TextUtils.equals(ActionUtil.INTENT_NAVBAR_EDIT_RESET_LAYOUT, action)) {
                 onResetLayout();
-            } else if (TextUtils.equals(ActionUtils.INTENT_ACTION_ACTION_PICKER, action)) {
-                int result = intent.getIntExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+            } else if (TextUtils.equals(ActionUtil.INTENT_ACTION_ACTION_PICKER, action)) {
+                int result = intent.getIntExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
                 if (result == Activity.RESULT_OK) {
-                    String actionString = intent.getStringExtra(ActionUtils.INTENT_EXTRA_ACTION_STRING);
-                    ActionConfig config = intent.getParcelableExtra(ActionUtils.INTENT_EXTRA_ACTION_CONFIG);
+                    String actionString = intent.getStringExtra(ActionUtil.INTENT_EXTRA_ACTION_STRING);
+                    ActionConfig config = intent.getParcelableExtra(ActionUtil.INTENT_EXTRA_ACTION_CONFIG);
                     onActionPicked(actionString, config);
                 }
-            } else if (TextUtils.equals(ActionUtils.INTENT_ICON_PICKER, action)) {
-                int result = intent.getIntExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+            } else if (TextUtils.equals(ActionUtil.INTENT_ICON_PICKER, action)) {
+                int result = intent.getIntExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
                 if (result == Activity.RESULT_OK) {
-                    String iconType = intent.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE);
-                    String iconPackage = intent.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_PACKAGE);
-                    String iconName = intent.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_NAME);
+                    String iconType = intent.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE);
+                    String iconPackage = intent.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_PACKAGE);
+                    String iconName = intent.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_NAME);
                     onIconPicked(iconType, iconPackage, iconName);
                 }
-            } else if (TextUtils.equals(ActionUtils.INTENT_GALLERY_PICKER, action)) {
+            } else if (TextUtils.equals(ActionUtil.INTENT_GALLERY_PICKER, action)) {
                 Log.d("BASEEDITOR", "ICON SELECTED");
-                int result = intent.getIntExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+                int result = intent.getIntExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
                 if (result == Activity.RESULT_OK) {
-                    String uri = intent.getStringExtra(ActionUtils.INTENT_EXTRA_URI);
+                    String uri = intent.getStringExtra(ActionUtil.INTENT_EXTRA_URI);
                     onImagePicked(uri);
                 }
             }

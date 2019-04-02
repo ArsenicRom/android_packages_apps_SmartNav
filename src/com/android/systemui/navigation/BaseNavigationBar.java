@@ -39,7 +39,7 @@ import com.android.systemui.plugins.statusbar.phone.NavGesture;
 import com.android.systemui.statusbar.phone.BarTransitions;
 import com.android.systemui.R;
 
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.ImageHelper;
 
 import com.facebook.rebound.Spring;
@@ -175,7 +175,7 @@ public abstract class BaseNavigationBar extends LinearLayout implements Navigato
                 Context.WINDOW_SERVICE);
         mSmartObserver = new SmartObserver(mHandler, context.getContentResolver());
         mSpringSystem = SpringSystem.create();
-        sIsTablet = !ActionUtils.navigationBarCanMove();
+        sIsTablet = !ActionUtil.navigationBarCanMove();
         IntentFilter filter = new IntentFilter();
         filter.addAction(AudioManager.STREAM_MUTE_CHANGED_ACTION);
         filter.addAction(AudioManager.VOLUME_CHANGED_ACTION);
@@ -333,8 +333,8 @@ public abstract class BaseNavigationBar extends LinearLayout implements Navigato
     }
 
     public int findViewByIdName(String name) {
-        return ActionUtils.getId(getContext(), name,
-                ActionUtils.PACKAGE_SYSTEMUI);
+        return ActionUtil.getId(getContext(), name,
+                ActionUtil.PACKAGE_SYSTEMUI);
     }
 
     public void setBackgroundColor(Drawable drawable) {
